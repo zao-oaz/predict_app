@@ -35,19 +35,19 @@ if df_test is not None:
     prediction = np.argmax(prediction, axis=1)
 
 # Cache
-cache = dict()
+#cache = dict()
 
 # Prédiction image 
 def test_prediction(index):
-    response = requests.get(index)
-    content = response.content
+    # response = requests.get(index)
+    # content = response.content
     st.button('Random')
     #print('Predicted category :', prediction[index])
     img = df_test[index].reshape(28,28)
     st.image(img, width=140)
     plt.imshow(img, cmap='gray')
     st.write(f'Prediction : {(prediction[index])}')
-    return content  
+    #return content  
 
 index = np.random.choice(df_test.shape[0])
 test_prediction(index)
