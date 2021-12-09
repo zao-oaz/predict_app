@@ -1,7 +1,6 @@
 # Data manip
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-import cv2
 
 # Import librairies
 import os
@@ -9,16 +8,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Sklearn
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-# Keras
-import tensorflow as tf
-from tensorflow.keras.models import Sequential # initialize neural network library
-from tensorflow.keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Flatten # build our layers library
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.models import save_model, load_model
 
 #Sreamlit via ligne de commande
 #streamlit run "C:\Users\zaome\Documents\Arthuro\Projet_reseau_neuronal\app.py"
@@ -96,31 +85,31 @@ test_prediction(index)
 
 # _____________________________________________ #
 
-st.title("Version 3")
+# st.title("Version 3")
 
-SIZE = 192
-# Premier modele  
-mode = st.checkbox("Dessinez votre chiffre", True)
-canvas_result = st_canvas(
-    fill_color='#000000',
-    stroke_width=15,
-    stroke_color='blue',
-    background_color='#FFFFFF',
-    width=SIZE, 
-    height=SIZE,
-    drawing_mode="freedraw" if mode else "transform",
-    key='canvas')
+# SIZE = 192
+# # Premier modele  
+# mode = st.checkbox("Dessinez votre chiffre", True)
+# canvas_result = st_canvas(
+#     fill_color='#000000',
+#     stroke_width=15,
+#     stroke_color='blue',
+#     background_color='#FFFFFF',
+#     width=SIZE, 
+#     height=SIZE,
+#     drawing_mode="freedraw" if mode else "transform",
+#     key='canvas')
 
-# Entrainement du modele
-if canvas_result.image_data is not None:
-    img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-    rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-    st.write('Prédiction du modèle')
-    st.image(rescaled)
+# # Entrainement du modele
+# if canvas_result.image_data is not None:
+#     img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+#     rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+#     st.write('Prédiction du modèle')
+#     st.image(rescaled)
 
-# Prediction + graph
-if st.button('Prédiction'):
-    test = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(test.reshape(1,28,28,1))
-    st.write(f'Prédiction : {np.argmax(val[0])}')
-    #st.bar_chart(val[0])
+# # Prediction + graph
+# if st.button('Prédiction'):
+#     test = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#     val = model.predict(test.reshape(1,28,28,1))
+#     st.write(f'Prédiction : {np.argmax(val[0])}')
+#     #st.bar_chart(val[0])
