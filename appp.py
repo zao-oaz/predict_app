@@ -20,10 +20,13 @@ MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'test_model.h5')
 model = load_model("test_model.h5")
 
 # Import Dataset test
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-  df_test = pd.read_csv(uploaded_file)
-  st.write(df_test.head())
+
+# uploaded_file = st.file_uploader("Choose a file")
+# if uploaded_file is not None:
+#   df_test = pd.read_csv(uploaded_file)
+#   st.write(df_test.head())
+
+df_test = pd.read_csv("C:/Users/zaome/Documents/Arthuro/Projet_reseau_neuronal/test.csv", decimal=',')
 
 # Preprocess
 if df_test is not None:
