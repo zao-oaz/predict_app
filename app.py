@@ -14,9 +14,12 @@ import matplotlib.pyplot as plt
 
 st.title("📉 Prédiction d'images")
 
-#Chemin du modele  
-MODEL_DIR = os.path.join("C:/Users/zaome/Documents/Arthuro/Projet_reseau_neuronal", 'test_model.h5')
-model = load_model("C:/Users/zaome/Documents/Arthuro/Projet_reseau_neuronal/test_model.h5")
+# Chemin du modele 
+ 
+#MODEL_DIR = os.path.join("C:/Users/zaome/Documents/Arthuro/Projet_reseau_neuronal", 'test_model.h5')
+#model = load_model("C:/Users/zaome/Documents/Arthuro/Projet_reseau_neuronal/test_model.h5")
+
+MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'test_model.h5')
 
 # ______________________________________________ #
 
