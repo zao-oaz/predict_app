@@ -62,28 +62,28 @@ test_prediction(index)
 
 # _____________________________________________ #
 
-st.title("Version 2")
+# st.title("Version 2")
 
-# Preprocess
-if df_test is not None:
-    df_test = df_test/255 
-    df_test = np.array(df_test)
-    df_test = df_test.reshape(df_test.shape[0], 28, 28, 1)
-    prediction = model.predict(df_test)
-    prediction = np.argmax(prediction, axis=1)
+# # Preprocess
+# if df_test is not None:
+#     df_test = df_test/255 
+#     df_test = np.array(df_test)
+#     df_test = df_test.reshape(df_test.shape[0], 28, 28, 1)
+#     prediction = model.predict(df_test)
+#     prediction = np.argmax(prediction, axis=1)
 
-# Prédiction image
-def test_prediction(index):
-    # Barre
-    number = st.slider("Pick a number", 0, 9)
-    st.write('Number :', number)
-    print('Predicted category :', prediction[index])
-    img = df_test[index].reshape(28,28)
-    st.image(img, width=140)
-    plt.imshow(img, cmap='gray')
+# # Prédiction image
+# def test_prediction(index):
+#     # Barre
+#     number = st.slider("Pick a number", 0, 9)
+#     st.write('Number :', number)
+#     print('Predicted category :', prediction[index])
+#     img = df_test[index].reshape(28,28)
+#     st.image(img, width=140)
+#     plt.imshow(img, cmap='gray')
 
-index = np.random.choice(df_test.shape[0])
-test_prediction(index)
+# index = np.random.choice(df_test.shape[0])
+# test_prediction(index)
 
 # _____________________________________________ #
 
