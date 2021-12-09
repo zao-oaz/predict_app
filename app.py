@@ -1,13 +1,13 @@
 # Data manip
 import streamlit as st
-from streamlit_drawable_canvas import st_canvas
+#from streamlit_drawable_canvas import st_canvas
 
 # Import librairies
 import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from tensorflow.keras.models import load_model
 
 #Sreamlit via ligne de commande
 #streamlit run "C:\Users\zaome\Documents\Arthuro\Projet_reseau_neuronal\app.py"
