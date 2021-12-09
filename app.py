@@ -1,5 +1,6 @@
 # Import librairies
 import os
+import requests
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -33,14 +34,20 @@ if df_test is not None:
     prediction = model.predict(df_test)
     prediction = np.argmax(prediction, axis=1)
 
+# Cache
+cache = dict()
+
 # Prédiction image 
-def test_prediction(index):  
+def test_prediction(index):
+    response = requests.get(index)
+    content = response.content
     st.button('Random')
     #print('Predicted category :', prediction[index])
     img = df_test[index].reshape(28,28)
     st.image(img, width=140)
     plt.imshow(img, cmap='gray')
     st.write(f'Prediction : {(prediction[index])}')
+    return content  
 
 index = np.random.choice(df_test.shape[0])
 test_prediction(index)
