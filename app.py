@@ -1,14 +1,12 @@
-# Data manip
-import streamlit as st
-from streamlit_drawable_canvas import st_canvas
-from PIL import Image
-
 # Import librairies
 import os
 import numpy as np
 import pandas as pd
+import streamlit as st
 import matplotlib.pyplot as plt
 import tensorflow as tf
+from streamlit_drawable_canvas import st_canvas
+from PIL import Image
 from tensorflow.keras.models import load_model
 
 #Sreamlit via ligne de commande
@@ -31,9 +29,9 @@ if df_test is not None:
     df_test = df_test/255 
     df_test = np.array(df_test)
     df_test = df_test.reshape(df_test.shape[0], 28, 28, 1)
+
     prediction = model.predict(df_test)
     prediction = np.argmax(prediction, axis=1)
-
 
 # Prédiction image 
 def test_prediction(index):  
@@ -54,8 +52,6 @@ st.markdown('''
 Try to write a digit!
 ''')
 
-
-
 SIZE = 192
 
 canvas_result = st_canvas(
@@ -70,16 +66,14 @@ canvas_result = st_canvas(
 
 if canvas_result.image_data is not None:
     img = canvas_result.image_data
-    
+
     image = Image.fromarray((img[:, :, 0]).astype(np.uint8))
     image = image.resize((28, 28))
     image = image.convert('L')
     image = (tf.keras.utils.img_to_array(image)/255)
     image = image.reshape(1,28,28,1)
-    test_x = tf.convert_to_tensor(image)
-    
-    
-    
+
+    test_x = tf.convert_to_tensor(image)   
     st.image(image)
 
 if st.button('Predict'):
